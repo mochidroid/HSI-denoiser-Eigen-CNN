@@ -362,7 +362,7 @@ flags.mexlink_ldoptimflags = {} ;
 flags.mexlink_linklibs = {} ;
 
 % NVCC: Additional flags passed to `nvcc` for compiling CUDA code.
-flags.nvcc = {'-D_FORCE_INLINES"', '--std=c++11', ...
+flags.nvcc = {'-std=c++14', ...
   sprintf('-I"%s"',fullfile(matlabroot,'extern','include')), ...
   sprintf('-I"%s"',fullfile(toolboxdir('parallel'),'gpu','extern','include')), ...
   opts.cudaArch} ;
@@ -371,7 +371,7 @@ flags.nvcc = {'-D_FORCE_INLINES"', '--std=c++11', ...
 
 switch arch
   case {'maci64','glnxa64'}
-    flags.cxx{end+1} = '--std=c++11' ;
+    flags.cxx{end+1} = '-std=c++14' ;
     flags.nvcc{end+1} = '--compiler-options=-fPIC' ;
     if ~opts.debug
       flags.cxxoptim = horzcat(flags.cxxoptim,'-mssse3','-ffast-math') ;
